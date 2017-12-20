@@ -1,0 +1,9 @@
+C:\Users\Nemanja\Desktop\Projekat\ModelLabsProjekat\bin64\FTN.Common.dll
+C:\Users\Nemanja\Desktop\Projekat\ModelLabsProjekat\bin64\FTN.Common.pdb
+C:\Users\Nemanja\Desktop\Projekat\ModelLabsProjekat\Common\obj\x64\Debug\FTN.Common.dll
+C:\Users\Nemanja\Desktop\Projekat\ModelLabsProjekat\Common\obj\x64\Debug\FTN.Common.pdb
+F:\ModelLabsProjekat\bin64\FTN.Common.dll
+F:\ModelLabsProjekat\bin64\FTN.Common.pdb
+F:\ModelLabsProjekat\Common\obj\x64\Debug\FTN.Common.dll
+F:\ModelLabsProjekat\Common\obj\x64\Debug\FTN.Common.pdb
+F:\ModelLabsProjekat\Common\obj\x64\Debug\Common.csprojResolveAssemblyReference.cache
