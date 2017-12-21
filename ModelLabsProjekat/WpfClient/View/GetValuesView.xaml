@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:WpfClient.View"
              xmlns:converter="clr-namespace:WpfClient.Converter"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="600" d:DesignWidth="600">
 
     <UserControl.Resources>
         <converter:MultiCloneConverter x:Key="multiCloner"/>
@@ -16,8 +16,24 @@
         <Grid.Background>
             <ImageBrush ImageSource="pozadina.jpg"></ImageBrush>
         </Grid.Background>
-        <Label x:Name="label" Content="Enter global id for particular object" HorizontalAlignment="Left" Margin="52,43,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="94,95,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="button" Content="Get" HorizontalAlignment="Left" Margin="201,137,0,0" VerticalAlignment="Top" Width="75"/>
+
+        <Label x:Name="label" Content="Choose model code" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+
+        <ComboBox x:Name="comboBox" SelectedItem="{Binding Path=ChosenDMSType}" HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top" Width="327" ItemsSource="{Binding Path= ModelCode }"/>
+
+        <Label x:Name="label1" Content="Choose properties" HorizontalAlignment="Left" Margin="10,86,0,0" VerticalAlignment="Top" Height="25"/>
+
+        <DataGrid x:Name="dataGrid"  ItemsSource="{Binding Path = Properties, UpdateSourceTrigger = PropertyChanged}" IsReadOnly="True" SelectionMode="Extended"  HorizontalAlignment="Left" Margin="10,111,0,0" VerticalAlignment="Top" Height="245" Width="327">
+            <DataGrid.RowHeaderTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <CheckBox IsChecked="{Binding Path=IsSelected, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGridRow}}}"/>
+                    </Grid>
+                </DataTemplate>
+            </DataGrid.RowHeaderTemplate>
+
+        </DataGrid>
+        
+        <Button x:Name="button" Content="Get" HorizontalAlignment="Left" Margin="262,410,0,0" VerticalAlignment="Top" Width="75"/>
     </Grid>
 </UserControl>

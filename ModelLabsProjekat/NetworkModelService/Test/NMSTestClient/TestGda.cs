@@ -626,6 +626,7 @@ namespace TelventDMS.Services.NetworkModelService.TestClient.Tests
         }
 
         #endregion set references
+
         private Dictionary<DMSType, ResourceDescription> CreateResourcesForUpdate(List<long> gids)
         {
             Dictionary<DMSType, ResourceDescription> updates = new Dictionary<DMSType, ResourceDescription>(new DMSTypeComparer());
@@ -726,62 +727,14 @@ namespace TelventDMS.Services.NetworkModelService.TestClient.Tests
             #endregion Creating resources
 
             #region Set references
-            //???
-            //SetPowerTransformerReferences(updates);
-            //SetTransformerWindingReferences(updates);
-            //SetWindingTestRefernces(updates);
+            //!!! :)
+            SetConnectivityNodeReferences(updates);
+            SetTerminalReferences(updates);
 
             #endregion Set references
 
             return updates;
         }
-
-        #region set references
-
-        //private void SetPowerTransformerReferences(Dictionary<DMSType, ResourceDescription> updates)
-        //{
-        //    for (int i = 0; i < updates[DMSType.POWERTR].Properties.Count; i++)
-        //    {
-        //        if (updates[DMSType.POWERTR].Properties[i].Id == ModelCode.PSR_LOCATION)
-        //        {
-        //            updates[DMSType.POWERTR].Properties[i].SetValue(updates[DMSType.LOCATION].Id);
-        //        }
-        //    }
-        //}
-
-        //private void SetTransformerWindingReferences(Dictionary<DMSType, ResourceDescription> updates)
-        //{
-        //    for (int i = 0; i < updates[DMSType.TRWINDING].Properties.Count; i++)
-        //    {
-        //        if (updates[DMSType.TRWINDING].Properties[i].Id == ModelCode.CONDEQ_BASVOLTAGE)
-        //        {
-        //            updates[DMSType.TRWINDING].Properties[i].SetValue(updates[DMSType.BASEVOLTAGE].Id);
-        //        }
-
-        //        if (updates[DMSType.TRWINDING].Properties[i].Id == ModelCode.PSR_LOCATION)
-        //        {
-        //            updates[DMSType.TRWINDING].Properties[i].SetValue(updates[DMSType.LOCATION].Id);
-        //        }
-
-        //        if (updates[DMSType.TRWINDING].Properties[i].Id == ModelCode.TRWINDING_POWERTRW)
-        //        {
-        //            updates[DMSType.TRWINDING].Properties[i].SetValue(updates[DMSType.POWERTR].Id);
-        //        }
-        //    }
-        //}
-
-        //private void SetWindingTestRefernces(Dictionary<DMSType, ResourceDescription> updates)
-        //{
-        //    for (int i = 0; i < updates[DMSType.WINDINGTEST].Properties.Count; i++)
-        //    {
-        //        if (updates[DMSType.WINDINGTEST].Properties[i].Id == ModelCode.WINDINGTEST_POWERTRWINDING)
-        //        {
-        //            updates[DMSType.WINDINGTEST].Properties[i].SetValue(updates[DMSType.TRWINDING].Id);
-        //        }
-        //    }
-        //}
-
-        #endregion set references
 
         #endregion GDAUpdate Service
 

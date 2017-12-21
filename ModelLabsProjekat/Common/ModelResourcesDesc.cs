@@ -656,7 +656,7 @@ namespace FTN.Common
 		/// </summary>
 		/// <param name="typeId">DMS type code representing entity type.</param>
 		/// <returns>List of property ids that corresponds to entity attributes.</returns>
-		public List<ModelCode> GetAllPropertyIds(DMSType typeId)
+		public List<ModelCode> GetAllPropertyIds(DMSType typeId) //!!!
 		{
 			return GetAllPropertyIds(GetModelCodeFromType(typeId));
 		}

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfClient.ViewModel;
 
 namespace WpfClient.View
 {
@@ -23,6 +24,7 @@ namespace WpfClient.View
         public GetExtentValuesView()
         {
             InitializeComponent();
+            DataContext = new GetExtentValuesViewModel();
         }
     }
 }

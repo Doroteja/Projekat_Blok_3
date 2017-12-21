@@ -247,3 +247,31 @@
 12/21/2017 1:12:50 AM : Inserting entity with GID (0000000500000001).
 12/21/2017 1:12:50 AM : Inserting entity with GID (0000000600000001).
 12/21/2017 1:12:50 AM : Applying delta to network model successfully finished.
+12/21/2017 11:02:02 AM : Starting Network Model Service...
+12/21/2017 11:02:02 AM : Inserting entity with GID (0000000100000001).
+12/21/2017 11:02:02 AM : Inserting entity with GID (0000000200000001).
+12/21/2017 11:02:02 AM : Inserting entity with GID (0000000300000001).
+12/21/2017 11:02:02 AM : Inserting entity with GID (0000000400000001).
+12/21/2017 11:02:02 AM : Inserting entity with GID (0000000500000001).
+12/21/2017 11:02:02 AM : Inserting entity with GID (0000000600000001).
+12/21/2017 11:02:03 AM : The WCF service GenericDataAccess is ready.
+12/21/2017 11:02:03 AM : Endpoints:
+12/21/2017 11:02:03 AM : net.tcp://localhost:10000/NetworkModelService/GDA/
+12/21/2017 11:02:03 AM : Connection string: ../NetworkModelData.data
+12/21/2017 11:02:03 AM : Trace level: Info
+12/21/2017 11:02:03 AM : The Network Model Service is started.
+12/21/2017 11:02:03 AM : Press <Enter> to stop the service.
+12/21/2017 11:13:26 AM : Starting Network Model Service...
+12/21/2017 11:13:26 AM : Inserting entity with GID (0000000100000001).
+12/21/2017 11:13:26 AM : Inserting entity with GID (0000000200000001).
+12/21/2017 11:13:26 AM : Inserting entity with GID (0000000300000001).
+12/21/2017 11:13:26 AM : Inserting entity with GID (0000000400000001).
+12/21/2017 11:13:26 AM : Inserting entity with GID (0000000500000001).
+12/21/2017 11:13:26 AM : Inserting entity with GID (0000000600000001).
+12/21/2017 11:13:28 AM : The WCF service GenericDataAccess is ready.
+12/21/2017 11:13:28 AM : Endpoints:
+12/21/2017 11:13:28 AM : net.tcp://localhost:10000/NetworkModelService/GDA/
+12/21/2017 11:13:28 AM : Connection string: ../NetworkModelData.data
+12/21/2017 11:13:28 AM : Trace level: Info
+12/21/2017 11:13:28 AM : The Network Model Service is started.
+12/21/2017 11:13:28 AM : Press <Enter> to stop the service.

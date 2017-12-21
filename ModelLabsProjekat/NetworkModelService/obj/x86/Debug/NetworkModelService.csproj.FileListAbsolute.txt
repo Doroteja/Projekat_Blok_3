@@ -18,3 +18,8 @@ C:\Users\Nemanja\Desktop\Projekat\ModelLabsProjekat\bin\FTN.Services.NetworkMode
 C:\Users\Nemanja\Desktop\Projekat\ModelLabsProjekat\NetworkModelService\obj\x86\Debug\NetworkModelService.csprojResolveAssemblyReference.cache
 C:\Users\Nemanja\Desktop\Projekat\ModelLabsProjekat\NetworkModelService\obj\x86\Debug\FTN.Services.NetworkModelService.dll
 C:\Users\Nemanja\Desktop\Projekat\ModelLabsProjekat\NetworkModelService\obj\x86\Debug\FTN.Services.NetworkModelService.pdb
+F:\Projekat_Blok_3\ModelLabsProjekat\bin\FTN.Services.NetworkModelService.dll
+F:\Projekat_Blok_3\ModelLabsProjekat\bin\FTN.Services.NetworkModelService.pdb
+F:\Projekat_Blok_3\ModelLabsProjekat\NetworkModelService\obj\x86\Debug\NetworkModelService.csprojResolveAssemblyReference.cache
+F:\Projekat_Blok_3\ModelLabsProjekat\NetworkModelService\obj\x86\Debug\FTN.Services.NetworkModelService.dll
+F:\Projekat_Blok_3\ModelLabsProjekat\NetworkModelService\obj\x86\Debug\FTN.Services.NetworkModelService.pdb
