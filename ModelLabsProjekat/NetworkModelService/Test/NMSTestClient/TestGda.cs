@@ -726,7 +726,7 @@ namespace TelventDMS.Services.NetworkModelService.TestClient.Tests
             #endregion Creating resources
 
             #region Set references
-
+            //???
             //SetPowerTransformerReferences(updates);
             //SetTransformerWindingReferences(updates);
             //SetWindingTestRefernces(updates);
