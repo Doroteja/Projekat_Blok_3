@@ -12,7 +12,7 @@ namespace FTN.ServiceContracts
 		}
 
 		public UpdateResult ApplyUpdate(Delta delta)
-		{
+        { 
 			return Channel.ApplyUpdate(delta);
 		}
 

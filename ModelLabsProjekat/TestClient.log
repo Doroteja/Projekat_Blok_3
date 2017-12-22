@@ -167,3 +167,17 @@ Client globalId: 0x00000006ffffffff	 - Server globalId: 0x0000000600000002
 12/21/2017 11:13:55 AM : Getting extent values method successfully finished.
 12/21/2017 11:14:27 AM : Getting extent values method started.
 12/21/2017 11:14:27 AM : Getting extent values method successfully finished.
+12/21/2017 10:21:37 PM : Network Model Service Test Client is up and running...
+12/21/2017 10:21:37 PM : Result directory: ../Results
+12/21/2017 10:21:42 PM : Apply update method started.
+12/21/2017 10:21:43 PM : Apply update method finished. 
+Update result: Succeeded
+Message: Applying delta to network model successfully finished.
+GlobalId pairs:
+Client globalId: 0x00000001ffffffff	 - Server globalId: 0x0000000100000002
+Client globalId: 0x00000002ffffffff	 - Server globalId: 0x0000000200000002
+Client globalId: 0x00000003ffffffff	 - Server globalId: 0x0000000300000002
+Client globalId: 0x00000004ffffffff	 - Server globalId: 0x0000000400000002
+Client globalId: 0x00000005ffffffff	 - Server globalId: 0x0000000500000002
+Client globalId: 0x00000006ffffffff	 - Server globalId: 0x0000000600000002
+

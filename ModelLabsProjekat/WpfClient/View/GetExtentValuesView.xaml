@@ -18,7 +18,15 @@
             <ImageBrush ImageSource="pozadina.jpg"></ImageBrush>
         </Grid.Background>
         <Label x:Name="label" Content="Choose model code" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="button" Content="Get" HorizontalAlignment="Left" Margin="262,456,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="button" Command="{Binding GetEVCommand}" Content="Get" HorizontalAlignment="Left" Margin="262,456,0,0" VerticalAlignment="Top" Width="75">
+            <Button.CommandParameter>
+                <MultiBinding Converter="{StaticResource multiCloner}">
+                    <Binding Path="SelectedItem" ElementName="comboBox"/>
+                    <Binding Path="SelectedItems" ElementName="dataGrid"/>
+                </MultiBinding>
+            </Button.CommandParameter>
+        </Button>
+
         <ComboBox x:Name="comboBox" SelectedItem="{Binding Path=ChosenDMSType}" HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top" Width="327" ItemsSource="{Binding Path= ModelCode }"/>
         <Label x:Name="label1" Content="Choose properties" HorizontalAlignment="Left" Margin="10,86,0,0" VerticalAlignment="Top" Height="25"/>
 
@@ -32,7 +40,14 @@
             </DataGrid.RowHeaderTemplate>
 
         </DataGrid>
-        <DataGrid x:Name="dataGrid1" ItemsSource="{Binding Path = Properties, UpdateSourceTrigger = PropertyChanged}" IsReadOnly="True" SelectionMode="Extended" HorizontalAlignment="Left" Margin="350,47,0,0" VerticalAlignment="Top" Height="309" Width="240"/>
+        <DataGrid x:Name="dataGrid1" ItemsSource="{Binding Path = ModelCodes, UpdateSourceTrigger = PropertyChanged}" IsReadOnly="True" SelectionMode="Extended" HorizontalAlignment="Left" Margin="350,47,0,0" VerticalAlignment="Top" Height="309" Width="240">
+            VerticalAlignment="Top" Height="245" Width="327">
+            <DataGrid.RowHeaderTemplate>
+                <DataTemplate>
+                  
+                </DataTemplate>
+            </DataGrid.RowHeaderTemplate>
+        </DataGrid>
 
     </Grid>
 </UserControl>

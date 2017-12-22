@@ -23,9 +23,13 @@ namespace WpfClient.ViewModel
         private List<DMSType> modelCode = new List<DMSType>();
         private ObservableCollection<ModelCodeWrapper> properties = new ObservableCollection<ModelCodeWrapper>();
 
-        public GetExtentValuesCommand GetEVcommand { get; set; }
+        public GetExtentValuesCommand GetEVCommand { get; set; }
 
         private DMSType chosenDMSType;
+
+        private List<long> modelCodes = new List<long>();
+
+
         
         public List<DMSType> ModelCode
         {
@@ -65,11 +69,28 @@ namespace WpfClient.ViewModel
             }
         }
 
+        public List<long> ModelCodes
+        {
+            get
+            {
+                if (modelCodes.Count != 0)
+                {
+                    return modelCodes;
+                }
+                return null;
+            }
+
+            set
+            {
+                modelCodes = value; OnPropertyChanged("ModelCodes");
+            }
+        }
+
         public GetExtentValuesViewModel()
         {
             FindModelCodes();
-            //FindProperties();
-            //this.GetEVcommand = new GetExtentValuesCommand(this);
+         
+            this.GetEVCommand = new GetExtentValuesCommand(this);
         }
 
         public void FindModelCodes()
