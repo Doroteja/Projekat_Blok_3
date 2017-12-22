@@ -27,10 +27,6 @@ namespace WpfClient.ViewModel
 
         private DMSType chosenDMSType;
 
-        private List<long> modelCodes = new List<long>();
-
-
-        
         public List<DMSType> ModelCode
         {
             get { return modelCode; }
@@ -69,27 +65,26 @@ namespace WpfClient.ViewModel
             }
         }
 
-        public List<long> ModelCodes
+        public ObservableCollection<ResourceDescriptionWrapper> ResourceDescriptions
         {
             get
             {
-                if (modelCodes.Count != 0)
-                {
-                    return modelCodes;
-                }
-                return null;
+                return resourceDescriptions;
             }
 
             set
             {
-                modelCodes = value; OnPropertyChanged("ModelCodes");
+                resourceDescriptions = value;
+                OnPropertyChanged("ResourceDescriptions");
             }
         }
 
+        private ObservableCollection<ResourceDescriptionWrapper> resourceDescriptions;
+
         public GetExtentValuesViewModel()
         {
+            ResourceDescriptions = new ObservableCollection<ResourceDescriptionWrapper>();
             FindModelCodes();
-         
             this.GetEVCommand = new GetExtentValuesCommand(this);
         }
 

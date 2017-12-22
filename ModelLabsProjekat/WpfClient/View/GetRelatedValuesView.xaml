@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:WpfClient.View"
               xmlns:converter ="clr-namespace:WpfClient.Converter"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="800" d:DesignWidth="800">
 
     <UserControl.Resources>
         <converter:MultiCloneConverter x:Key="multiCloner"/>

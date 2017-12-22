@@ -23,3 +23,8 @@ F:\Projekat_Blok_3\ModelLabsProjekat\bin\FTN.ServiceContracts.ServiceContracts.N
 F:\Projekat_Blok_3\ModelLabsProjekat\ServiceContracts\NetworkModelQueryContract\obj\x86\Debug\NetworkModelGDAContract.csprojResolveAssemblyReference.cache
 F:\Projekat_Blok_3\ModelLabsProjekat\ServiceContracts\NetworkModelQueryContract\obj\x86\Debug\FTN.ServiceContracts.ServiceContracts.NetworkModelQueryContract.dll
 F:\Projekat_Blok_3\ModelLabsProjekat\ServiceContracts\NetworkModelQueryContract\obj\x86\Debug\FTN.ServiceContracts.ServiceContracts.NetworkModelQueryContract.pdb
+C:\Users\e332-2014\Desktop\Projekat_Blok_3\ModelLabsProjekat\bin\FTN.ServiceContracts.ServiceContracts.NetworkModelQueryContract.dll
+C:\Users\e332-2014\Desktop\Projekat_Blok_3\ModelLabsProjekat\bin\FTN.ServiceContracts.ServiceContracts.NetworkModelQueryContract.pdb
+C:\Users\e332-2014\Desktop\Projekat_Blok_3\ModelLabsProjekat\ServiceContracts\NetworkModelQueryContract\obj\x86\Debug\NetworkModelGDAContract.csprojResolveAssemblyReference.cache
+C:\Users\e332-2014\Desktop\Projekat_Blok_3\ModelLabsProjekat\ServiceContracts\NetworkModelQueryContract\obj\x86\Debug\FTN.ServiceContracts.ServiceContracts.NetworkModelQueryContract.dll
+C:\Users\e332-2014\Desktop\Projekat_Blok_3\ModelLabsProjekat\ServiceContracts\NetworkModelQueryContract\obj\x86\Debug\FTN.ServiceContracts.ServiceContracts.NetworkModelQueryContract.pdb

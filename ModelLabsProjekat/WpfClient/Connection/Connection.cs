@@ -52,10 +52,10 @@ namespace WpfClient.Connection
             return null;
         }
 
-        public List<long> GetExtentValues(ModelCode modelCode, List<ModelCode> properties)
+        public List<ResourceDescription> GetExtentValues(ModelCode modelCode, List<ModelCode> properties)
         {
             int iteratorId = 0;
-            List<long> ids = new List<long>();
+            List<ResourceDescription> retList = new List<ResourceDescription>();
 
             try
             {
@@ -71,7 +71,7 @@ namespace WpfClient.Connection
 
                     for (int i = 0; i < rds.Count; i++)
                     {
-                        ids.Add(rds[i].Id);
+                        retList.Add(rds[i]);
                     }
 
                     resourcesLeft = GdaProxy.IteratorResourcesLeft(iteratorId);
@@ -80,7 +80,7 @@ namespace WpfClient.Connection
 
             }
             catch{}
-            return ids;
+            return retList;
         }
 
         public List<long> GetRelatedValues(long sourceGlobalId, List<ModelCode> properties, Association association)

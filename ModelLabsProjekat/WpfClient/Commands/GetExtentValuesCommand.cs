@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,9 +35,29 @@ namespace WpfClient.Commands
                 ModelCodeHelper.GetModelCodeFromString((item.ModelCode).ToString(), out mc1);
                 m.Add(mc1);
             }
-            List<long> modelCodes = Connection.Connection.Instance().GetExtentValues(mc, m);
+            List<ResourceDescription> rds = Connection.Connection.Instance().GetExtentValues(mc, m);
 
-            vm.ModelCodes = modelCodes;
+            ObservableCollection<ResourceDescriptionWrapper> ocRd = new ObservableCollection<ResourceDescriptionWrapper>();
+            
+            foreach (var item in rds)
+            {
+                var modelCodeString = ((DMSType)ModelCodeHelper.ExtractTypeFromGlobalId(item.Id)).ToString();
+
+                ModelCode modelCode;
+                ModelCodeHelper.GetModelCodeFromString(modelCodeString, out modelCode);
+                ResourceDescriptionWrapper rdw = new ResourceDescriptionWrapper(modelCode, (item.Id).ToString());
+                ocRd.Add(rdw);
+
+                foreach (var prop in item.Properties)
+                {
+                    string s = prop.ToString();
+                    ResourceDescriptionWrapper rdw1 = new ResourceDescriptionWrapper(prop.Id, s);
+                    ocRd.Add(rdw1);
+                }
+                ResourceDescriptionWrapper empty = new ResourceDescriptionWrapper();
+                ocRd.Add(empty);
+            }
+            vm.ResourceDescriptions = ocRd;
         }
     }
 }

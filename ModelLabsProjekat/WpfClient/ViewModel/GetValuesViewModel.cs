@@ -25,7 +25,7 @@ namespace WpfClient.ViewModel
         public GetValuesCommand GetVcommand { get; set; }
 
         private DMSType chosenDMSType;
-
+        
         public List<DMSType> ModelCode
         {
             get { return modelCode; }

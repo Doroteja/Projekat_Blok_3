@@ -62,6 +62,7 @@
     <Compile Include="Commands\GetRelatedValuesCommand.cs" />
     <Compile Include="Commands\GetValuesCommand.cs" />
     <Compile Include="CommonClasses\ModelCodeWrapper.cs" />
+    <Compile Include="CommonClasses\ResourceDescriptionWrapper.cs" />
     <Compile Include="Converter\MultiCloneConverter.cs" />
     <Compile Include="GetValuesWindow.xaml.cs">
       <DependentUpon>GetValuesWindow.xaml</DependentUpon>
