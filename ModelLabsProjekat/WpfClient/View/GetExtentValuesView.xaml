@@ -7,7 +7,7 @@
              xmlns:model="clr-namespace:WpfClient.ViewModel"
              xmlns:converter ="clr-namespace:WpfClient.Converter"
              mc:Ignorable="d" 
-             d:DesignHeight="800" d:DesignWidth="800">
+             d:DesignHeight="600" d:DesignWidth="800">
 
     <UserControl.Resources>
         <converter:MultiCloneConverter x:Key="multiCloner"/>
@@ -17,20 +17,48 @@
         <Grid.Background>
             <ImageBrush ImageSource="pozadina.jpg"></ImageBrush>
         </Grid.Background>
-        <Label x:Name="label" Content="Choose model code" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="button" Command="{Binding GetEVCommand}" Content="Get" HorizontalAlignment="Left" Margin="262,456,0,0" VerticalAlignment="Top" Width="75">
+
+        <Label x:Name="label" Content="Choose model code" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top"/>
+
+        <Button x:Name="button" Command="{Binding GetEVCommand}" Content="Get" HorizontalAlignment="Left" Margin="262,498,0,0" VerticalAlignment="Top" Width="75" 
+              
+                 >
+
             <Button.CommandParameter>
                 <MultiBinding Converter="{StaticResource multiCloner}">
                     <Binding Path="SelectedItem" ElementName="comboBox"/>
                     <Binding Path="SelectedItems" ElementName="dataGrid"/>
                 </MultiBinding>
             </Button.CommandParameter>
+
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    
+                    <Setter Property="ToolTipService.ShowOnDisabled" Value="true" />
+                    <Setter Property="ToolTip" Value="{x:Null}" />
+                    
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text.Length, ElementName=comboBox, UpdateSourceTrigger=PropertyChanged}" Value="0">
+                            <Setter Property="IsEnabled" Value="False"/>
+                        </DataTrigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="ToolTip" Value="All filels are required" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+
+                    
+                   
+                  
+
+                </Button.Style>
+            
         </Button>
 
-        <ComboBox x:Name="comboBox" SelectedItem="{Binding Path=ChosenDMSType}" HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top" Width="327" ItemsSource="{Binding Path= ModelCode }"/>
-        <Label x:Name="label1" Content="Choose properties" HorizontalAlignment="Left" Margin="10,86,0,0" VerticalAlignment="Top" Height="25"/>
+        <ComboBox x:Name="comboBox" SelectedItem="{Binding Path=ChosenDMSType}" HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top" Width="327" ItemsSource="{Binding Path= ModelCodes }"/>
+        <Label x:Name="label1" Content="Choose properties" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top" Height="25"/>
 
-        <DataGrid x:Name="dataGrid"  ItemsSource="{Binding Path = Properties, UpdateSourceTrigger = PropertyChanged}" IsReadOnly="True" SelectionMode="Extended"  HorizontalAlignment="Left" Margin="10,111,0,0" VerticalAlignment="Top" Height="245" Width="327">
+        <DataGrid x:Name="dataGrid"  ItemsSource="{Binding Path = Properties }" IsReadOnly="True" SelectionMode="Extended"  HorizontalAlignment="Left" Margin="10,104,0,0" VerticalAlignment="Top" Height="366" Width="327">
             <DataGrid.RowHeaderTemplate>
                 <DataTemplate>
                     <Grid>
@@ -38,11 +66,11 @@
                     </Grid>
                 </DataTemplate>
             </DataGrid.RowHeaderTemplate>
-
         </DataGrid>
+
         <DataGrid x:Name="dataGrid1" ItemsSource="{Binding ResourceDescriptions}" 
                   AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Extended"
-                  HorizontalAlignment="Left" Margin="350,47,0,0" VerticalAlignment="Top" Height="309" Width="439">
+                  HorizontalAlignment="Left" Margin="358,47,0,0" VerticalAlignment="Top" Height="423" Width="380">
             <DataGrid.ColumnHeaderStyle>
                 <Style TargetType="{x:Type DataGridColumnHeader}">
                     <Setter Property="FontSize" Value="14"/>
@@ -50,9 +78,11 @@
             </DataGrid.ColumnHeaderStyle>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ModelCode"  Binding="{Binding Mc}"/>
-                <DataGridTextColumn Header="ID"  Binding="{Binding Value}"/>
+                <DataGridTextColumn Header="Value"  Binding="{Binding Value}"/>
             </DataGrid.Columns>
         </DataGrid>
+
+        <Label x:Name="label3" Content="Results" HorizontalAlignment="Left" Margin="358,16,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </UserControl>

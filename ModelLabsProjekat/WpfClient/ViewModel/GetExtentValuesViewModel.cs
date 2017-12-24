@@ -20,17 +20,19 @@ namespace WpfClient.ViewModel
 
         ModelResourcesDesc modelResourcesDesc = new ModelResourcesDesc();
        
-        private List<DMSType> modelCode = new List<DMSType>();
+        private List<DMSType> modelCodes = new List<DMSType>();
         private ObservableCollection<ModelCodeWrapper> properties = new ObservableCollection<ModelCodeWrapper>();
 
         public GetExtentValuesCommand GetEVCommand { get; set; }
 
         private DMSType chosenDMSType;
 
-        public List<DMSType> ModelCode
+        private ObservableCollection<ResourceDescriptionWrapper> resourceDescriptions;
+
+        public List<DMSType> ModelCodes
         {
-            get { return modelCode; }
-            set { modelCode = value; OnPropertyChanged("ModelCode"); }
+            get { return modelCodes; }
+            set { modelCodes = value; OnPropertyChanged("ModelCodes"); }
         }
 
         public DMSType ChosenDMSType
@@ -79,7 +81,7 @@ namespace WpfClient.ViewModel
             }
         }
 
-        private ObservableCollection<ResourceDescriptionWrapper> resourceDescriptions;
+        
 
         public GetExtentValuesViewModel()
         {
@@ -90,7 +92,7 @@ namespace WpfClient.ViewModel
 
         public void FindModelCodes()
         {
-            modelCode = Enum.GetValues(typeof(DMSType)).Cast<DMSType>().ToList().FindAll(t => t != DMSType.MASK_TYPE);
+            modelCodes = Enum.GetValues(typeof(DMSType)).Cast<DMSType>().ToList().FindAll(t => t != DMSType.MASK_TYPE);
         }
 
         public ObservableCollection<ModelCodeWrapper> FindProperties()

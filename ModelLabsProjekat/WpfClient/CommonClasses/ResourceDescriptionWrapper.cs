@@ -9,10 +9,10 @@ namespace WpfClient.CommonClasses
 {
     public class ResourceDescriptionWrapper
     {
-        private ModelCode mc;
+        private string mc;
         private string value;
         
-        public ModelCode Mc
+        public string Mc
         {
             get
             {
@@ -38,7 +38,7 @@ namespace WpfClient.CommonClasses
             }
         }
 
-        public ResourceDescriptionWrapper(ModelCode mc, string value)
+        public ResourceDescriptionWrapper(string mc, string value)
         {
             this.mc = mc;
             this.value = value;

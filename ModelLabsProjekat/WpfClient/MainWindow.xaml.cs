@@ -23,6 +23,27 @@ namespace WpfClient
         public MainWindow()
         {
             InitializeComponent();
+
+            try
+            {
+                //// Set NMSTestInterfaceClient console layout
+                //Console.SetWindowPosition(0, 0);
+
+                //Console.SetWindowSize((int)(Console.LargestWindowWidth * 0.7), (int)(Console.LargestWindowHeight * 0.8));
+                //Console.Title = "Network Model Service Client";
+
+                double screenWidth = System.Windows.SystemParameters.PrimaryScreenWidth;
+                double screenHeight = System.Windows.SystemParameters.PrimaryScreenHeight;
+                double windowWidth = this.Width;
+                double windowHeight = this.Height;
+                this.Left = (screenWidth / 2) - (windowWidth / 2);
+                this.Top = (screenHeight / 2) - (windowHeight / 2);
+
+            }
+            catch (Exception ex)
+            {
+                
+            }
         }
     }
 }

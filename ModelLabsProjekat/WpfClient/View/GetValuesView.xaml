@@ -4,9 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfClient.View"
+             xmlns:model="clr-namespace:WpfClient.ViewModel"
              xmlns:converter="clr-namespace:WpfClient.Converter"
              mc:Ignorable="d" 
-             d:DesignHeight="800" d:DesignWidth="800">
+             d:DesignHeight="600" d:DesignWidth="800">
 
     <UserControl.Resources>
         <converter:MultiCloneConverter x:Key="multiCloner"/>
@@ -17,13 +18,14 @@
             <ImageBrush ImageSource="pozadina.jpg"></ImageBrush>
         </Grid.Background>
 
-        <Label x:Name="label" Content="Choose model code" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label" Content="Choose model code" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="comboBox" SelectedItem="{Binding Path=ChosenDMSType}" HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top" Width="327" ItemsSource="{Binding Path= ModelCodes }"/>
 
-        <ComboBox x:Name="comboBox" SelectedItem="{Binding Path=ChosenDMSType}" HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top" Width="327" ItemsSource="{Binding Path= ModelCode }"/>
+        <Label x:Name="label1" Content="Choose ID" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top" Width="81" Height="24"/>
+        <ComboBox x:Name="comboBox1" SelectedItem="{Binding Path=ChosenId}" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" Width="327" ItemsSource="{Binding Path= Ids }"/>
 
-        <Label x:Name="label1" Content="Choose properties" HorizontalAlignment="Left" Margin="10,86,0,0" VerticalAlignment="Top" Height="25"/>
-
-        <DataGrid x:Name="dataGrid"  ItemsSource="{Binding Path = Properties, UpdateSourceTrigger = PropertyChanged}" IsReadOnly="True" SelectionMode="Extended"  HorizontalAlignment="Left" Margin="10,111,0,0" VerticalAlignment="Top" Height="245" Width="327">
+        <Label x:Name="label2" Content="Choose properties" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top" Height="25"/>
+        <DataGrid x:Name="dataGrid"  ItemsSource="{Binding Path = Properties, UpdateSourceTrigger = PropertyChanged}" IsReadOnly="True" SelectionMode="Extended"  HorizontalAlignment="Left" Margin="10,160,0,0" VerticalAlignment="Top" Height="310" Width="327">
             <DataGrid.RowHeaderTemplate>
                 <DataTemplate>
                     <Grid>
@@ -31,9 +33,51 @@
                     </Grid>
                 </DataTemplate>
             </DataGrid.RowHeaderTemplate>
-
         </DataGrid>
-        
-        <Button x:Name="button" Content="Get" HorizontalAlignment="Left" Margin="262,410,0,0" VerticalAlignment="Top" Width="75"/>
+
+        <Button x:Name="button" Command="{Binding GetVCommand}" Content="Get" HorizontalAlignment="Left" Margin="262,498,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-2.5,2.525">
+            <Button.CommandParameter>
+                <MultiBinding Converter="{StaticResource multiCloner}">
+                    <Binding Path="SelectedItem" ElementName="comboBox1"/>
+                    <Binding Path="SelectedItems" ElementName="dataGrid"/>
+                </MultiBinding>
+            </Button.CommandParameter>
+
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="ToolTipService.ShowOnDisabled" Value="true" />
+                    <Setter Property="ToolTip" Value="{x:Null}" />
+                    
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text.Length, ElementName=comboBox, UpdateSourceTrigger=PropertyChanged}" Value="0">
+                            <Setter Property="IsEnabled" Value="False"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Text.Length, ElementName=comboBox1, UpdateSourceTrigger=PropertyChanged}" Value="0">
+                            <Setter Property="IsEnabled" Value="False"/>
+                        </DataTrigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="ToolTip" Value="All filels are required" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            
+        </Button>
+
+        <DataGrid x:Name="dataGrid1" ItemsSource="{Binding ResourceDescription}" 
+                  AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Extended"
+                  HorizontalAlignment="Left" Margin="358,47,0,0" VerticalAlignment="Top" Height="423" Width="380">
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="FontSize" Value="14"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ModelCode"  Binding="{Binding Mc}"/>
+                <DataGridTextColumn Header="Value"  Binding="{Binding Value}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label x:Name="label3" Content="Results" HorizontalAlignment="Left" Margin="358,16,0,0" VerticalAlignment="Top"/>
+
     </Grid>
 </UserControl>

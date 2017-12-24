@@ -18,18 +18,24 @@ namespace WpfClient.ViewModel
 
         ModelResourcesDesc modelResourcesDesc = new ModelResourcesDesc();
 
-        private List<DMSType> modelCode = new List<DMSType>();
+        private List<DMSType> modelCodes = new List<DMSType>();
+
+        private List<long> ids = new List<long>();
 
         private ObservableCollection<ModelCodeWrapper> properties = new ObservableCollection<ModelCodeWrapper>();
 
-        public GetValuesCommand GetVcommand { get; set; }
+        public GetValuesCommand GetVCommand { get; set; }
 
         private DMSType chosenDMSType;
-        
-        public List<DMSType> ModelCode
+
+        private ModelCode chosenId;
+
+        private ObservableCollection<ResourceDescriptionWrapper> resourceDescription;
+
+        public List<DMSType> ModelCodes
         {
-            get { return modelCode; }
-            set { modelCode = value; OnPropertyChanged("ModelCode"); }
+            get { return modelCodes; }
+            set { modelCodes = value; OnPropertyChanged("ModelCodes"); }
         }
 
         public DMSType ChosenDMSType
@@ -43,6 +49,7 @@ namespace WpfClient.ViewModel
             {
                 chosenDMSType = value;
                 OnPropertyChanged("ChosenDMSType");
+                OnPropertyChanged("Ids");
                 OnPropertyChanged("Properties");
             }
         }
@@ -53,7 +60,7 @@ namespace WpfClient.ViewModel
             {
                 if (chosenDMSType != 0)
                 {
-                    return FindProperties();
+                    return FindProperties(chosenDMSType);
                 }
                 return null;
             }
@@ -64,22 +71,81 @@ namespace WpfClient.ViewModel
             }
         }
 
+        public List<long> Ids
+        {
+            get
+            {
+                if (chosenDMSType != 0)
+                {
+                    return FindIds(chosenDMSType);
+                }
+                return null;
+            }
+
+            set
+            {
+                ids = value; OnPropertyChanged("Ids");
+            }
+        }
+
+        public ModelCode ChosenId
+        {
+            get
+            {
+                return chosenId;
+            }
+
+            set
+            {
+                chosenId = value;
+            }
+        }
+
+        public ObservableCollection<ResourceDescriptionWrapper> ResourceDescription
+        {
+            get
+            {
+                return resourceDescription;
+            }
+
+            set
+            {
+                resourceDescription = value; OnPropertyChanged("ResourceDescription");
+            }
+        }
+
         public GetValuesViewModel()
         {
             FindModelCodes();
             
-            //this.GetEVcommand = new GetExtentValuesCommand(this);
+            this.GetVCommand = new GetValuesCommand(this);
         }
 
         public void FindModelCodes()
         {
-            modelCode = Enum.GetValues(typeof(DMSType)).Cast<DMSType>().ToList().FindAll(t => t != DMSType.MASK_TYPE);
+            modelCodes = Enum.GetValues(typeof(DMSType)).Cast<DMSType>().ToList().FindAll(t => t != DMSType.MASK_TYPE);
         }
 
-        public ObservableCollection<ModelCodeWrapper> FindProperties()
+        public List<long> FindIds(DMSType chosenDMSType)
         {
+            ModelCode mc;
+            ModelCodeHelper.GetModelCodeFromString(chosenDMSType.ToString(), out mc);
+            List<ModelCode> properties = Connection.Connection.Instance().ModelResourceDesc.GetAllPropertyIds(chosenDMSType);
+            List <ResourceDescription> rds = Connection.Connection.Instance().GetExtentValues(mc, properties);
 
-            List<ModelCode> lista = modelResourcesDesc.GetAllPropertyIds(chosenDMSType);
+            List<long> ids = new List<long>();
+            foreach (ResourceDescription rd in rds)
+            {
+                ids.Add(rd.Id);
+            }
+
+            return ids;
+        }
+
+        public ObservableCollection<ModelCodeWrapper> FindProperties(DMSType chosenDMSType)
+        {
+            List<ModelCode> lista = Connection.Connection.Instance().ModelResourceDesc.GetAllPropertyIds(chosenDMSType);
+            //List <ModelCode> lista = modelResourcesDesc.GetAllPropertyIds(chosenDMSType);
 
             ObservableCollection<ModelCodeWrapper> list = new ObservableCollection<ModelCodeWrapper>();
 

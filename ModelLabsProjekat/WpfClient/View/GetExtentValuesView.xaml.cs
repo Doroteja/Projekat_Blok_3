@@ -25,6 +25,7 @@ namespace WpfClient.View
         {
             InitializeComponent();
             DataContext = new GetExtentValuesViewModel();
+
         }
     }
 }

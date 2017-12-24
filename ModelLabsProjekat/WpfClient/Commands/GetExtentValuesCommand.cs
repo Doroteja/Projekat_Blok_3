@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using WpfClient.CommonClasses;
 using WpfClient.ViewModel;
 
@@ -22,18 +23,35 @@ namespace WpfClient.Commands
 
         public override void Execute(object parameter)
         {
-            Object[] parameters = parameter as Object[];
-            ModelCode mc;
-            ModelCodeHelper.GetModelCodeFromString(parameters[0].ToString(), out mc);
-
-            IList i = (IList)parameters[1];
-            var properties = i.Cast<ModelCodeWrapper>();
-            List<ModelCode> m = new List<ModelCode>();
-            foreach (var item in properties)
+            if (parameter == null || !(parameter is Object[]))
             {
-                ModelCode mc1;
-                ModelCodeHelper.GetModelCodeFromString((item.ModelCode).ToString(), out mc1);
-                m.Add(mc1);
+                MessageBox.Show("All fields are required.");
+                return;
+            }
+
+            ModelCode mc;
+            List<ModelCode> m = new List<ModelCode>();
+
+            try
+            {
+                Object[] parameters = parameter as Object[];
+                
+                ModelCodeHelper.GetModelCodeFromString(parameters[0].ToString(), out mc);
+
+                IList i = (IList)parameters[1];
+                var properties = i.Cast<ModelCodeWrapper>();
+               
+                foreach (var item in properties)
+                {
+                    ModelCode mc1;
+                    ModelCodeHelper.GetModelCodeFromString((item.ModelCode).ToString(), out mc1);
+                    m.Add(mc1);
+                }
+            }
+            catch
+            {
+                MessageBox.Show("All fields are required.");
+                return;
             }
             List<ResourceDescription> rds = Connection.Connection.Instance().GetExtentValues(mc, m);
 
@@ -45,13 +63,13 @@ namespace WpfClient.Commands
 
                 ModelCode modelCode;
                 ModelCodeHelper.GetModelCodeFromString(modelCodeString, out modelCode);
-                ResourceDescriptionWrapper rdw = new ResourceDescriptionWrapper(modelCode, (item.Id).ToString());
+                ResourceDescriptionWrapper rdw = new ResourceDescriptionWrapper(modelCodeString, (item.Id).ToString());
                 ocRd.Add(rdw);
 
                 foreach (var prop in item.Properties)
                 {
                     string s = prop.ToString();
-                    ResourceDescriptionWrapper rdw1 = new ResourceDescriptionWrapper(prop.Id, s);
+                    ResourceDescriptionWrapper rdw1 = new ResourceDescriptionWrapper((prop.Id).ToString(), s);
                     ocRd.Add(rdw1);
                 }
                 ResourceDescriptionWrapper empty = new ResourceDescriptionWrapper();

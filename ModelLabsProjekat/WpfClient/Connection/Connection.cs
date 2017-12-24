@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TelventDMS.Services.NetworkModelService.TestClient.Tests;
 using System.ServiceModel;
+using System.Windows;
 
 namespace WpfClient.Connection
 {
@@ -27,6 +28,19 @@ namespace WpfClient.Connection
 
         }
 
+        public ModelResourcesDesc ModelResourceDesc
+        {
+            get
+            {
+                return modelResourceDesc;
+            }
+
+            set
+            {
+                modelResourceDesc = value;
+            }
+        }
+
         public static Connection Instance()
         {
            if (instance == null)
@@ -39,7 +53,14 @@ namespace WpfClient.Connection
         private Connection()
         {
             gdaProxy = new NetworkModelGDAProxy("NetworkModelGDAEndpoint");
-            gdaProxy.Open();
+            try
+            {
+                gdaProxy.Open();
+            }
+            catch
+            {
+                MessageBox.Show("Service host is not started.");
+            }
         }
 
         public void Dispose()
@@ -47,9 +68,23 @@ namespace WpfClient.Connection
             throw new NotImplementedException();
         }
 
-        public ResourceDescription GetValues(long globalId)
+        public ResourceDescription GetValues(long globalId, List<ModelCode> properties)
         {
-            return null;
+            ResourceDescription rd = null;
+
+            try
+            {
+                short modelCode = ModelCodeHelper.ExtractTypeFromGlobalId(globalId);
+       
+                rd = GdaProxy.GetValues(globalId, properties);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(String.Format("Getting values method for entered id [{0}] failed.", globalId));
+                return null;
+            }
+
+            return rd;
         }
 
         public List<ResourceDescription> GetExtentValues(ModelCode modelCode, List<ModelCode> properties)
@@ -62,8 +97,15 @@ namespace WpfClient.Connection
                 int numberOfResources = 2;
                 int resourcesLeft = 0;
 
-                iteratorId = GdaProxy.GetExtentValues(modelCode, properties);
-                resourcesLeft = GdaProxy.IteratorResourcesLeft(iteratorId);
+                try
+                {
+                    iteratorId = GdaProxy.GetExtentValues(modelCode, properties);
+                    resourcesLeft = GdaProxy.IteratorResourcesLeft(iteratorId);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(String.Format("Getting extent values method for entered model code [{0}] failed.", modelCode));
+                }
 
                 while (resourcesLeft > 0)
                 {

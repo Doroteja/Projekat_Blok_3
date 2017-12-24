@@ -17,13 +17,12 @@ C:\Users\Nemanja\Desktop\Projekat\ModelLabsProjekat\bin\FTN.Common.dll
 C:\Users\Nemanja\Desktop\Projekat\ModelLabsProjekat\bin\FTN.Common.pdb
 C:\Users\Nemanja\Desktop\Projekat\ModelLabsProjekat\Common\obj\x86\Debug\FTN.Common.dll
 C:\Users\Nemanja\Desktop\Projekat\ModelLabsProjekat\Common\obj\x86\Debug\FTN.Common.pdb
-F:\Projekat_Blok_3\ModelLabsProjekat\bin\FTN.Common.dll
-F:\Projekat_Blok_3\ModelLabsProjekat\bin\FTN.Common.pdb
-F:\Projekat_Blok_3\ModelLabsProjekat\Common\obj\x86\Debug\Common.csprojResolveAssemblyReference.cache
-F:\Projekat_Blok_3\ModelLabsProjekat\Common\obj\x86\Debug\FTN.Common.dll
-F:\Projekat_Blok_3\ModelLabsProjekat\Common\obj\x86\Debug\FTN.Common.pdb
 C:\Users\e332-2014\Desktop\Projekat_Blok_3\ModelLabsProjekat\bin\FTN.Common.dll
 C:\Users\e332-2014\Desktop\Projekat_Blok_3\ModelLabsProjekat\bin\FTN.Common.pdb
 C:\Users\e332-2014\Desktop\Projekat_Blok_3\ModelLabsProjekat\Common\obj\x86\Debug\Common.csprojResolveAssemblyReference.cache
 C:\Users\e332-2014\Desktop\Projekat_Blok_3\ModelLabsProjekat\Common\obj\x86\Debug\FTN.Common.dll
 C:\Users\e332-2014\Desktop\Projekat_Blok_3\ModelLabsProjekat\Common\obj\x86\Debug\FTN.Common.pdb
+F:\Projekat_Blok_3\ModelLabsProjekat\bin\FTN.Common.dll
+F:\Projekat_Blok_3\ModelLabsProjekat\bin\FTN.Common.pdb
+F:\Projekat_Blok_3\ModelLabsProjekat\Common\obj\x86\Debug\FTN.Common.dll
+F:\Projekat_Blok_3\ModelLabsProjekat\Common\obj\x86\Debug\FTN.Common.pdb

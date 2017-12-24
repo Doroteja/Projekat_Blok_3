@@ -509,15 +509,29 @@ namespace FTN.Common
 				case PropertyType.TimeSpan:
 					return this.AsLong().ToString();
 				case PropertyType.Reference:
-					//return this.AsLong().ToString("x16");
-					return this.AsLong().ToString();
+                    return String.Format("0x{0:x16}",this.AsReference());
 				case PropertyType.Float:
 					return this.AsFloat().ToString(new System.Globalization.CultureInfo("en-US", false).NumberFormat);
 				case PropertyType.String:
 					return this.AsString();
 				case PropertyType.DateTime:
-					return this.AsDateTime().ToShortTimeString() + " | " + this.AsDateTime().ToShortDateString();				
-				default:
+					return this.AsDateTime().ToShortTimeString() + " | " + this.AsDateTime().ToShortDateString();
+                case PropertyType.ReferenceVector:
+                    if (this.AsLongs().Count > 0)
+                    {
+                        StringBuilder sb = new StringBuilder(100);
+                        for (int j = 0; j < this.AsLongs().Count; j++)
+                        {
+                            sb.Append(String.Format("0x{0:x16}", this.AsLongs()[j])).Append(", ");
+                        }
+
+                        return sb.ToString(0, sb.Length - 2);
+                    }
+                    else
+                    {
+                        return String.Format("empty long/reference vector");
+                    }
+                default:
 					return null;
 			}
 		}
