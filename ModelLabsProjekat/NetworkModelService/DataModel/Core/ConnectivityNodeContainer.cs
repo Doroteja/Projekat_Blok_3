@@ -51,7 +51,7 @@ namespace FTN.Services.NetworkModelService.DataModel.Core
         {
             switch (t)
             {
-                case ModelCode.CONNECTIVITYNODECONTAINER_CONNNODES:
+                case ModelCode.CONNECTIVITYNODECONTAINER_CONNECTIVITUNODES:
                     return true;
 
                 default:
@@ -63,7 +63,7 @@ namespace FTN.Services.NetworkModelService.DataModel.Core
         {
             switch (prop.Id)
             {
-                case ModelCode.CONNECTIVITYNODECONTAINER_CONNNODES:
+                case ModelCode.CONNECTIVITYNODECONTAINER_CONNECTIVITUNODES:
                     prop.SetValue(connectivityNodes);
                     break;
                 default:
@@ -91,7 +91,7 @@ namespace FTN.Services.NetworkModelService.DataModel.Core
         {
             if (connectivityNodes != null && connectivityNodes.Count > 0 && (refType == TypeOfReference.Target || refType == TypeOfReference.Both))
             {
-                references[ModelCode.CONNECTIVITYNODECONTAINER_CONNNODES] = connectivityNodes.GetRange(0, connectivityNodes.Count);
+                references[ModelCode.CONNECTIVITYNODECONTAINER_CONNECTIVITUNODES] = connectivityNodes.GetRange(0, connectivityNodes.Count);
             }
 
             base.GetReferences(references, refType);
@@ -101,7 +101,7 @@ namespace FTN.Services.NetworkModelService.DataModel.Core
         {
             switch (referenceId)
             {
-                case ModelCode.CONNECTIVITYNODE_CONNNODECONTAINER:
+                case ModelCode.CONNECTIVITYNODE_CONNECTIVITYNODECONTAINER:
                     connectivityNodes.Add(globalId);
                     break;
 
@@ -115,7 +115,7 @@ namespace FTN.Services.NetworkModelService.DataModel.Core
         {
             switch (referenceId)
             {
-                case ModelCode.CONNECTIVITYNODE_CONNNODECONTAINER:
+                case ModelCode.CONNECTIVITYNODE_CONNECTIVITYNODECONTAINER:
 
                     if (connectivityNodes.Contains(globalId))
                     {

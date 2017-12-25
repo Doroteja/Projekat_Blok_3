@@ -618,7 +618,7 @@ namespace TelventDMS.Services.NetworkModelService.TestClient.Tests
         {
             for (int i = 0; i < updates[DMSType.CONNECTIVITYNODE].Properties.Count; i++)
             {
-                if (updates[DMSType.CONNECTIVITYNODE].Properties[i].Id == ModelCode.CONNECTIVITYNODE_CONNNODECONTAINER)
+                if (updates[DMSType.CONNECTIVITYNODE].Properties[i].Id == ModelCode.CONNECTIVITYNODE_CONNECTIVITYNODECONTAINER)
                 {
                     updates[DMSType.CONNECTIVITYNODE].Properties[i].SetValue(updates[DMSType.CONNECTIVITYNODECONTAINER].Id);
                 }

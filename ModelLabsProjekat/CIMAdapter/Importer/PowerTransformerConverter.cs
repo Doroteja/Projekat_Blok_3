@@ -144,7 +144,7 @@
                         report.Report.Append("WARNING: Convert ").Append(cimConnectivityNode.GetType().ToString()).Append(" rdfID = \"").Append(cimConnectivityNode.ID);
                         report.Report.Append("\" - Failed to set reference to ConnectivityNodeContainer: rdfID \"").Append(cimConnectivityNode.ConnectivityNodeContainer.ID).AppendLine(" \" is not mapped to GID!");
                     }
-                    rd.AddProperty(new Property(ModelCode.CONNECTIVITYNODE_CONNNODECONTAINER, gid));
+                    rd.AddProperty(new Property(ModelCode.CONNECTIVITYNODE_CONNECTIVITYNODECONTAINER, gid));
                 }
 
             }

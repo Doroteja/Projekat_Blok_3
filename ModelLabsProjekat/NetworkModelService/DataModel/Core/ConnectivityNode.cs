@@ -82,7 +82,7 @@ namespace FTN.Services.NetworkModelService.DataModel.Core
             switch (t)
             {
                 case ModelCode.CONNECTIVITYNODE_DESCRIPTION:
-                case ModelCode.CONNECTIVITYNODE_CONNNODECONTAINER:
+                case ModelCode.CONNECTIVITYNODE_CONNECTIVITYNODECONTAINER:
                 case ModelCode.CONNECTIVITYNODE_TERMINALS:
                     return true;
 
@@ -100,7 +100,7 @@ namespace FTN.Services.NetworkModelService.DataModel.Core
                     property.SetValue(description);
                     break;
 
-                case ModelCode.CONNECTIVITYNODE_CONNNODECONTAINER:
+                case ModelCode.CONNECTIVITYNODE_CONNECTIVITYNODECONTAINER:
                     property.SetValue(connectivityNodeContainer);
                     break;
 
@@ -122,7 +122,7 @@ namespace FTN.Services.NetworkModelService.DataModel.Core
                     description = property.AsString();
                     break;
 
-                case ModelCode.CONNECTIVITYNODE_CONNNODECONTAINER:
+                case ModelCode.CONNECTIVITYNODE_CONNECTIVITYNODECONTAINER:
                     connectivityNodeContainer = property.AsReference();
                     break;
                     
@@ -150,8 +150,8 @@ namespace FTN.Services.NetworkModelService.DataModel.Core
         {
             if (connectivityNodeContainer != 0 && (refType == TypeOfReference.Reference || refType == TypeOfReference.Both))
             {
-                references[ModelCode.CONNECTIVITYNODE_CONNNODECONTAINER] = new List<long>();
-                references[ModelCode.CONNECTIVITYNODE_CONNNODECONTAINER].Add(connectivityNodeContainer);
+                references[ModelCode.CONNECTIVITYNODE_CONNECTIVITYNODECONTAINER] = new List<long>();
+                references[ModelCode.CONNECTIVITYNODE_CONNECTIVITYNODECONTAINER].Add(connectivityNodeContainer);
             }
 
             if (terminals != null && terminals.Count != 0 && (refType == TypeOfReference.Target || refType == TypeOfReference.Both))
