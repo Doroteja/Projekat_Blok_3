@@ -18,7 +18,3 @@ C:\Users\Nemanja\Desktop\Projekat\ModelLabsProjekat\bin\CIMParser.pdb
 C:\Users\Nemanja\Desktop\Projekat\ModelLabsProjekat\CIMParser\obj\x86\Debug\CIMParser.csprojResolveAssemblyReference.cache
 C:\Users\Nemanja\Desktop\Projekat\ModelLabsProjekat\CIMParser\obj\x86\Debug\CIMParser.dll
 C:\Users\Nemanja\Desktop\Projekat\ModelLabsProjekat\CIMParser\obj\x86\Debug\CIMParser.pdb
-F:\Projekat_Blok_3\ModelLabsProjekat\bin\CIMParser.dll
-F:\Projekat_Blok_3\ModelLabsProjekat\bin\CIMParser.pdb
-F:\Projekat_Blok_3\ModelLabsProjekat\CIMParser\obj\x86\Debug\CIMParser.dll
-F:\Projekat_Blok_3\ModelLabsProjekat\CIMParser\obj\x86\Debug\CIMParser.pdb

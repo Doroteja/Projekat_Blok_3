@@ -23,6 +23,3 @@ C:\Users\e332-2014\Desktop\Projekat_Blok_3\ModelLabsProjekat\Common\obj\x86\Debu
 C:\Users\e332-2014\Desktop\Projekat_Blok_3\ModelLabsProjekat\Common\obj\x86\Debug\FTN.Common.dll
 C:\Users\e332-2014\Desktop\Projekat_Blok_3\ModelLabsProjekat\Common\obj\x86\Debug\FTN.Common.pdb
 F:\Projekat_Blok_3\ModelLabsProjekat\bin\FTN.Common.dll
-F:\Projekat_Blok_3\ModelLabsProjekat\bin\FTN.Common.pdb
-F:\Projekat_Blok_3\ModelLabsProjekat\Common\obj\x86\Debug\FTN.Common.dll
-F:\Projekat_Blok_3\ModelLabsProjekat\Common\obj\x86\Debug\FTN.Common.pdb

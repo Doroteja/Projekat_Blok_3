@@ -32,13 +32,3 @@ C:\Users\Nemanja\Desktop\Projekat\ModelLabsProjekat\CIMProfileCreator\obj\x86\De
 C:\Users\Nemanja\Desktop\Projekat\ModelLabsProjekat\CIMProfileCreator\obj\x86\Debug\CIMProfileCreator.csproj.GenerateResource.Cache
 C:\Users\Nemanja\Desktop\Projekat\ModelLabsProjekat\CIMProfileCreator\obj\x86\Debug\FTN.ESI.SIMES.CIM.CIMProfileCreator.exe
 C:\Users\Nemanja\Desktop\Projekat\ModelLabsProjekat\CIMProfileCreator\obj\x86\Debug\FTN.ESI.SIMES.CIM.CIMProfileCreator.pdb
-F:\Projekat_Blok_3\ModelLabsProjekat\bin\Predefined\PredefinedClasses.xml
-F:\Projekat_Blok_3\ModelLabsProjekat\bin\Predefined\PredefinedEnumerations.xml
-F:\Projekat_Blok_3\ModelLabsProjekat\bin\Predefined\PredefinedPackages.xml
-F:\Projekat_Blok_3\ModelLabsProjekat\bin\FTN.ESI.SIMES.CIM.CIMProfileCreator.exe
-F:\Projekat_Blok_3\ModelLabsProjekat\bin\FTN.ESI.SIMES.CIM.CIMProfileCreator.pdb
-F:\Projekat_Blok_3\ModelLabsProjekat\CIMProfileCreator\obj\x86\Debug\FTN.ESI.SIMES.CIM.CIMProfileCreator.CIMProfileCreatorForm.resources
-F:\Projekat_Blok_3\ModelLabsProjekat\CIMProfileCreator\obj\x86\Debug\FTN.ESI.SIMES.CIM.CIMProfileCreator.Properties.Resources.resources
-F:\Projekat_Blok_3\ModelLabsProjekat\CIMProfileCreator\obj\x86\Debug\CIMProfileCreator.csproj.GenerateResource.Cache
-F:\Projekat_Blok_3\ModelLabsProjekat\CIMProfileCreator\obj\x86\Debug\FTN.ESI.SIMES.CIM.CIMProfileCreator.exe
-F:\Projekat_Blok_3\ModelLabsProjekat\CIMProfileCreator\obj\x86\Debug\FTN.ESI.SIMES.CIM.CIMProfileCreator.pdb

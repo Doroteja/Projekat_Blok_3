@@ -37,12 +37,3 @@ C:\Users\Nemanja\Desktop\Projekat\ModelLabsProjekat\ModelLabsApp\obj\x86\Debug\M
 C:\Users\Nemanja\Desktop\Projekat\ModelLabsProjekat\ModelLabsApp\obj\x86\Debug\ModelLabsApp.csproj.GenerateResource.Cache
 C:\Users\Nemanja\Desktop\Projekat\ModelLabsProjekat\ModelLabsApp\obj\x86\Debug\ModelLabsApp.exe
 C:\Users\Nemanja\Desktop\Projekat\ModelLabsProjekat\ModelLabsApp\obj\x86\Debug\ModelLabsApp.pdb
-F:\Projekat_Blok_3\ModelLabsProjekat\bin\ModelLabsApp.exe.config
-F:\Projekat_Blok_3\ModelLabsProjekat\bin\ModelLabsApp.exe
-F:\Projekat_Blok_3\ModelLabsProjekat\bin\ModelLabsApp.pdb
-F:\Projekat_Blok_3\ModelLabsProjekat\ModelLabsApp\obj\x86\Debug\ModelLabsApp.csprojResolveAssemblyReference.cache
-F:\Projekat_Blok_3\ModelLabsProjekat\ModelLabsApp\obj\x86\Debug\ModelLabsApp.ModelLabsAppForm.resources
-F:\Projekat_Blok_3\ModelLabsProjekat\ModelLabsApp\obj\x86\Debug\ModelLabsApp.Properties.Resources.resources
-F:\Projekat_Blok_3\ModelLabsProjekat\ModelLabsApp\obj\x86\Debug\ModelLabsApp.csproj.GenerateResource.Cache
-F:\Projekat_Blok_3\ModelLabsProjekat\ModelLabsApp\obj\x86\Debug\ModelLabsApp.exe
-F:\Projekat_Blok_3\ModelLabsProjekat\ModelLabsApp\obj\x86\Debug\ModelLabsApp.pdb

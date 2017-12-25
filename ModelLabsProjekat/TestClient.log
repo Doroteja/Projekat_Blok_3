@@ -30,3 +30,19 @@ Client globalId: 0x00000006ffffffff	 - Server globalId: 0x0000000600000002
 
 12/23/2017 11:13:57 PM : Getting extent values method started.
 12/23/2017 11:13:58 PM : Getting extent values method successfully finished.
+12/25/2017 4:41:47 PM : Network Model Service Test Client is up and running...
+12/25/2017 4:41:47 PM : Result directory: ../Results
+12/25/2017 4:47:20 PM : Entering association failed. System.FormatException: Input string was not in a correct format.
+   at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseInt64(String value, NumberStyles options, NumberFormatInfo numfmt)
+   at System.Int64.Parse(String s)
+   at FTN.Services.NetworkModelService.TestClient.Program.InputAssociation() in F:\Projekat_Blok_3\ModelLabsProjekat\NetworkModelService\Test\NMSTestClient\Program.cs:line 254
+12/25/2017 4:47:20 PM : GetRelatedValues failed. Input string was not in a correct format.
+12/25/2017 4:47:40 PM : Getting related values method started.
+12/25/2017 4:47:41 PM : Getting related values method  failed for sourceGlobalId = 25769803777 and association (propertyId = 12884901889, type = 0). Reason: There was an error while trying to serialize parameter http://tempuri.org/:association. The InnerException message was 'Enum value '12884901889' is invalid for type 'FTN.Common.ModelCode' and cannot be serialized. Ensure that the necessary enum values are present and are marked with EnumMemberAttribute attribute if the type has DataContractAttribute attribute.'.  Please see InnerException for more details.
+12/25/2017 4:48:29 PM : Getting related values method started.
+12/25/2017 4:48:29 PM : Getting related values method successfully finished.
+12/25/2017 4:58:37 PM : Network Model Service Test Client is up and running...
+12/25/2017 4:58:37 PM : Result directory: ../Results
+12/25/2017 4:59:26 PM : Getting related values method started.
+12/25/2017 4:59:27 PM : Getting related values method successfully finished.
