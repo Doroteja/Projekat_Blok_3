@@ -18,7 +18,7 @@ namespace WpfClient.ViewModel
 
         private List<DMSType> modelCodes = new List<DMSType>();
 
-        private List<string> ids = new List<string>();
+        private List<long> ids = new List<long>();
 
         private List<ModelCode> propertyReferences = new List<ModelCode>();
         private List<ModelCode> propertyReferencesTemp = new List<ModelCode>();
@@ -27,6 +27,7 @@ namespace WpfClient.ViewModel
         private ObservableCollection<ModelCodeWrapper> properties = new ObservableCollection<ModelCodeWrapper>();
 
         public GetRelatedValuesCommand GetRVCommand { get; set; }
+        private ObservableCollection<ResourceDescriptionWrapper> resourceDescriptions;
 
         private DMSType chosenDMSType;
 
@@ -72,7 +73,7 @@ namespace WpfClient.ViewModel
             }
         }
 
-        public List<string> Ids
+        public List<long> Ids
         {
             get
             {
@@ -163,10 +164,24 @@ namespace WpfClient.ViewModel
             }
         }
 
+        public ObservableCollection<ResourceDescriptionWrapper> ResourceDescriptions
+        {
+            get
+            {
+                return resourceDescriptions;
+            }
+
+            set
+            {
+                resourceDescriptions = value;
+                OnPropertyChanged("ResourceDescriptions");
+            }
+        }
+
         public GetRelatedValuesViewModel()
         {
             FindModelCodes();
-            this.GetRVCommand = new GetRelatedValuesCommand();
+            this.GetRVCommand = new GetRelatedValuesCommand(this);
         }
 
         private void FindModelCodes()
@@ -174,17 +189,17 @@ namespace WpfClient.ViewModel
             modelCodes = Enum.GetValues(typeof(DMSType)).Cast<DMSType>().ToList().FindAll(t => t != DMSType.MASK_TYPE);
         }
 
-        private List<string> FindIds(DMSType chosenDMSType)
+        private List<long> FindIds(DMSType chosenDMSType)
         {
             ModelCode mc;
             ModelCodeHelper.GetModelCodeFromString(chosenDMSType.ToString(), out mc);
             List<ModelCode> properties = Connection.Connection.Instance().ModelResourceDesc.GetAllPropertyIds(chosenDMSType);
             List<ResourceDescription> rds = Connection.Connection.Instance().GetExtentValues(mc, properties);
 
-            List<string> ids = new List<string>();
+            List<long> ids = new List<long>();
             foreach (ResourceDescription rd in rds)
             {
-                ids.Add(String.Format("0x{0:x16}", rd.Id));
+                ids.Add(rd.Id);
             }
 
             return ids;

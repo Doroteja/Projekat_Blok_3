@@ -125,9 +125,36 @@ namespace WpfClient.Connection
             return retList;
         }
 
-        public List<long> GetRelatedValues(long sourceGlobalId, List<ModelCode> properties, Association association)
+        public List<ResourceDescription> GetRelatedValues(long sourceGlobalId, List<ModelCode> properties, Association association)
         {
-            return null;
+            List<ResourceDescription> retVal = new List<ResourceDescription>();
+            int numberOfResources = 2;
+
+            try
+            {
+                int iteratorId = GdaProxy.GetRelatedValues(sourceGlobalId, properties, association);
+                int resourcesLeft = GdaProxy.IteratorResourcesLeft(iteratorId);
+
+                while (resourcesLeft > 0)
+                {
+                    List<ResourceDescription> rds = GdaProxy.IteratorNext(numberOfResources, iteratorId);
+
+                    for (int i = 0; i < rds.Count; i++)
+                    {
+                        retVal.Add(rds[i]);
+                    }
+
+                    resourcesLeft = GdaProxy.IteratorResourcesLeft(iteratorId);
+
+                    GdaProxy.IteratorClose(iteratorId);
+                }
+            }
+            catch
+            {
+
+            }
+
+            return retVal;
         }
     }
 }
