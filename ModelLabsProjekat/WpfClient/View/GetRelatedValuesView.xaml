@@ -81,7 +81,7 @@
         <Label x:Name="label4" Content="Choose property (reference)" HorizontalAlignment="Left" Margin="11,137,0,0" VerticalAlignment="Top" Width="246" Height="29"/>
         <ComboBox x:Name="comboBox2" SelectedItem="{Binding Path=ChosenPropertyReference}" HorizontalAlignment="Left" Margin="10,174,0,0" VerticalAlignment="Top" Width="327" ItemsSource="{Binding Path= PropertyReferences}"/>
         <Label x:Name="label5" Content="Choose type&#xD;&#xA;" HorizontalAlignment="Left" Margin="10,209,0,0" VerticalAlignment="Top" Height="26"/>
-        <ComboBox x:Name="comboBox3" HorizontalAlignment="Left" Margin="10,236,0,0" VerticalAlignment="Top" Width="327"/>
+        <ComboBox x:Name="comboBox3" SelectedItem="{Binding Path=ChosenChildrenType}" HorizontalAlignment="Left" Margin="10,236,0,0" VerticalAlignment="Top" Width="327" ItemsSource="{Binding Path= ChildrenType}"/>
 
 
     </Grid>

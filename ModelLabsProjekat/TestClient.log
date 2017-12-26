@@ -46,3 +46,17 @@ Client globalId: 0x00000006ffffffff	 - Server globalId: 0x0000000600000002
 12/25/2017 4:58:37 PM : Result directory: ../Results
 12/25/2017 4:59:26 PM : Getting related values method started.
 12/25/2017 4:59:27 PM : Getting related values method successfully finished.
+12/26/2017 1:30:24 AM : Network Model Service Test Client is up and running...
+12/26/2017 1:30:24 AM : Result directory: ../Results
+12/26/2017 1:30:25 AM : Apply update method started.
+12/26/2017 1:30:26 AM : Apply update method finished. 
+Update result: Succeeded
+Message: Applying delta to network model successfully finished.
+GlobalId pairs:
+Client globalId: 0x00000001ffffffff	 - Server globalId: 0x0000000100000002
+Client globalId: 0x00000002ffffffff	 - Server globalId: 0x0000000200000002
+Client globalId: 0x00000003ffffffff	 - Server globalId: 0x0000000300000002
+Client globalId: 0x00000004ffffffff	 - Server globalId: 0x0000000400000002
+Client globalId: 0x00000005ffffffff	 - Server globalId: 0x0000000500000002
+Client globalId: 0x00000006ffffffff	 - Server globalId: 0x0000000600000002
+

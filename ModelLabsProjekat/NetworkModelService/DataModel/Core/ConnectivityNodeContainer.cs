@@ -51,7 +51,7 @@ namespace FTN.Services.NetworkModelService.DataModel.Core
         {
             switch (t)
             {
-                case ModelCode.CONNECTIVITYNODECONTAINER_CONNECTIVITUNODES:
+                case ModelCode.CONNECTIVITYNODECONTAINER_CONNECTIVITYNODES:
                     return true;
 
                 default:
@@ -63,7 +63,7 @@ namespace FTN.Services.NetworkModelService.DataModel.Core
         {
             switch (prop.Id)
             {
-                case ModelCode.CONNECTIVITYNODECONTAINER_CONNECTIVITUNODES:
+                case ModelCode.CONNECTIVITYNODECONTAINER_CONNECTIVITYNODES:
                     prop.SetValue(connectivityNodes);
                     break;
                 default:
@@ -91,7 +91,7 @@ namespace FTN.Services.NetworkModelService.DataModel.Core
         {
             if (connectivityNodes != null && connectivityNodes.Count > 0 && (refType == TypeOfReference.Target || refType == TypeOfReference.Both))
             {
-                references[ModelCode.CONNECTIVITYNODECONTAINER_CONNECTIVITUNODES] = connectivityNodes.GetRange(0, connectivityNodes.Count);
+                references[ModelCode.CONNECTIVITYNODECONTAINER_CONNECTIVITYNODES] = connectivityNodes.GetRange(0, connectivityNodes.Count);
             }
 
             base.GetReferences(references, refType);

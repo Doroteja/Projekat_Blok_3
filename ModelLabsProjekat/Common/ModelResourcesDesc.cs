@@ -878,7 +878,7 @@ namespace FTN.Common
 		{			
 			notSettablePropertyIds.Add(ModelCode.IDOBJ_GID);
 			notSettablePropertyIds.Add(ModelCode.CONDUCTINGEQUIPMENT_TERMINALS);
-			notSettablePropertyIds.Add(ModelCode.CONNECTIVITYNODECONTAINER_CONNECTIVITUNODES);
+			notSettablePropertyIds.Add(ModelCode.CONNECTIVITYNODECONTAINER_CONNECTIVITYNODES);
 			notSettablePropertyIds.Add(ModelCode.CONNECTIVITYNODE_TERMINALS);
 		}
 	

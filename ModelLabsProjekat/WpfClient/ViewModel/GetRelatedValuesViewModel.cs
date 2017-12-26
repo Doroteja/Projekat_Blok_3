@@ -33,6 +33,7 @@ namespace WpfClient.ViewModel
         private ModelCode chosenPropertyReference;
 
         private ModelCode chosenId;
+        private ModelCode chosenChildrenType;
 
         public List<DMSType> ModelCodes
         {
@@ -47,6 +48,7 @@ namespace WpfClient.ViewModel
             {
                 chosenDMSType = value;
                 OnPropertyChanged("ChosenDMSType");
+
                 OnPropertyChanged("Ids");
                 OnPropertyChanged("PropertyReferences");
             }
@@ -56,16 +58,17 @@ namespace WpfClient.ViewModel
         {
             get
             {
-                if (chosenPropertyReference != 0)
+                if (chosenChildrenType != 0)
                 {
-                    return FindPropertyModelCode(chosenPropertyReference);
+                    DMSType dmsType = ModelCodeHelper.GetTypeFromModelCode(chosenChildrenType);
+                    return FindProperties(dmsType);
                 }
                 return null;
             }
 
             set
             {
-                properties = value; OnPropertyChanged("Properties");
+                properties = value; OnPropertyChanged("Properties"); 
             }
         }
 
@@ -101,8 +104,10 @@ namespace WpfClient.ViewModel
                     ModelCode mc;
                     ModelCodeHelper.GetModelCodeFromString(chosenDMSType.ToString(), out mc);
                     propertyReferencesTemp = new List<ModelCode>();
+
                     FindPropertyReferences(mc);
                     FindParentsReferences(mc);
+
                     return propertyReferencesTemp;
                 }
                 return null;
@@ -123,7 +128,12 @@ namespace WpfClient.ViewModel
 
             set
             {
-                chosenPropertyReference = value; OnPropertyChanged("ChosenPropertyReference"); FindPropertyModelCode(chosenPropertyReference); OnPropertyChanged("Properties");
+                chosenPropertyReference = value;
+                OnPropertyChanged("ChosenPropertyReference");
+
+                FindPropertyModelCode(chosenPropertyReference);
+                OnPropertyChanged("Properties");
+                OnPropertyChanged("ChildrenType");
             }
         }
 
@@ -136,7 +146,20 @@ namespace WpfClient.ViewModel
 
             set
             {
-                childrenType = value; OnPropertyChanged("ChildrenType");
+                childrenType = value; OnPropertyChanged("ChildrenType"); 
+            }
+        }
+
+        public ModelCode ChosenChildrenType
+        {
+            get
+            {
+                return chosenChildrenType;
+            }
+
+            set
+            {
+                chosenChildrenType = value; OnPropertyChanged("ChosenChildrenType"); OnPropertyChanged("Properties");
             }
         }
 
@@ -170,8 +193,7 @@ namespace WpfClient.ViewModel
         private ObservableCollection<ModelCodeWrapper> FindProperties(DMSType chosenDMSType)
         {
             List<ModelCode> lista = Connection.Connection.Instance().ModelResourceDesc.GetAllPropertyIds(chosenDMSType);
-            //List <ModelCode> lista = modelResourcesDesc.GetAllPropertyIds(chosenDMSType);
-
+        
             ObservableCollection<ModelCodeWrapper> list = new ObservableCollection<ModelCodeWrapper>();
 
             foreach (var m in lista)
@@ -211,11 +233,11 @@ namespace WpfClient.ViewModel
             }
         }
 
-        private ObservableCollection<ModelCodeWrapper> FindPropertyModelCode(ModelCode property)
+        private void FindPropertyModelCode(ModelCode property)
         {
             string[] props = (property.ToString()).Split('_');
 
-            props[1] = props[1].TrimEnd('s');
+            props[1] = props[1].TrimEnd('S');
             DMSType propertyCode = ModelResourcesDesc.GetTypeFromModelCode(property);
             // DMSType propertyCode = ModelCodeHelper.GetDMSTypeFromString(property);
 
@@ -225,51 +247,66 @@ namespace WpfClient.ViewModel
             foreach (ModelCode modelCode in Enum.GetValues(typeof(ModelCode)))
             {
 
-                if ((String.Compare(modelCode.ToString(), mc.ToString()) != 0) && (String.Compare(property.ToString(), modelCode.ToString()) != 0) && (String.Compare(props[1].ToString(), modelCode.ToString())) == 0)
+                if ((String.Compare(modelCode.ToString(), mc.ToString()) != 0) && (String.Compare(property.ToString(), modelCode.ToString()) != 0) && (String.Compare(props[1] , modelCode.ToString())) == 0)
                 {
                     DMSType type = ModelCodeHelper.GetTypeFromModelCode(modelCode);
                     if (type == 0)
                     {
                         FindChildren(modelCode);
                     }
+                    else
+                    {
+                        childrenType = new List<ModelCode>();
+                        childrenType.Add(modelCode);
+                    }
 
-                    return FindProperties(type); 
                 }
             }
-            return null;
         }
 
-        private List<ModelCode> FindChildren(ModelCode modelCode)
+        private void FindChildren(ModelCode modelCode)
         {
             StringBuilder sb = new StringBuilder();
+            sb.Append("0x");
             List<ModelCode> retCodes = new List<ModelCode>();
 
             long lmc = (long)modelCode;
             string smc = String.Format("0x{0:x16}", lmc);
 
+            string[] newS = smc.Split('x');
+            char[] c = (newS[1]).ToCharArray();
+
            
-            char[] c = (smc).ToCharArray();
-            
             foreach (char ch in c)
             {
-               while (ch != '0')
+               if (ch != '0')
                 {
                     sb.Append(ch);
+                }
+               else
+                {
+                    break;
                 }
 
             }
 
             foreach(ModelCode mc in Enum.GetValues(typeof(ModelCode)))
             {
-                lmc = (long)mc;
-                smc = String.Format("0x{0:x16}", lmc);
-                if (smc.StartsWith(sb.ToString()))
+                DMSType type = ModelCodeHelper.GetTypeFromModelCode(mc);
+                short sh = (short)mc;
+                if ((modelCode != mc) && (sh == 0) && (type != 0))
                 {
-                    retCodes.Add(mc);
+                    lmc = (long)mc;
+                    smc = String.Format("0x{0:x16}", lmc);
+                    if (smc.StartsWith(sb.ToString()))
+                    {
+                        retCodes.Add(mc);
+
+                    }
                 }
             }
 
-            return retCodes;
+            childrenType = retCodes;
         }
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
