@@ -64,9 +64,6 @@
     <Compile Include="CommonClasses\ModelCodeWrapper.cs" />
     <Compile Include="CommonClasses\ResourceDescriptionWrapper.cs" />
     <Compile Include="Converter\MultiCloneConverter.cs" />
-    <Compile Include="GetValuesWindow.xaml.cs">
-      <DependentUpon>GetValuesWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Connection\Connection.cs" />
     <Compile Include="ViewModel\GetExtentValuesViewModel.cs" />
     <Compile Include="ViewModel\GetRelatedValuesViewModel.cs" />
@@ -80,13 +77,6 @@
     <Compile Include="View\GetValuesView.xaml.cs">
       <DependentUpon>GetValuesView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\StartView.xaml.cs">
-      <DependentUpon>StartView.xaml</DependentUpon>
-    </Compile>
-    <Page Include="GetValuesWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -108,10 +98,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\GetValuesView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\StartView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -144,9 +130,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="View\pozadina.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{892CBE15-9ED7-4540-81FA-0EAABA592138}</Project>
       <Name>Common</Name>
@@ -160,7 +143,9 @@
       <Name>NetworkModelGDAContract</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="View\background.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

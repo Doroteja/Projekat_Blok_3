@@ -7,7 +7,7 @@
              xmlns:model="clr-namespace:WpfClient.ViewModel"
              xmlns:converter ="clr-namespace:WpfClient.Converter"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="800">
+             d:DesignHeight="650" d:DesignWidth="950">
 
     <UserControl.Resources>
         <converter:MultiCloneConverter x:Key="multiCloner"/>
@@ -15,14 +15,24 @@
 
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="pozadina.jpg"></ImageBrush>
+            <ImageBrush ImageSource="background.jpg"></ImageBrush>
         </Grid.Background>
 
-        <Label x:Name="label" Content="Choose model code" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label" FontSize="14" FontWeight="Bold" Content="Choose model code" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="comboBox" SelectedItem="{Binding Path=ChosenDMSType}" Margin="10,47,0,0" ItemsSource="{Binding Path= ModelCodes }" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="400"/>
 
-        <Button x:Name="button" Command="{Binding GetEVCommand}" Content="Get" HorizontalAlignment="Left" Margin="262,498,0,0" VerticalAlignment="Top" Width="75" 
-              
-                 >
+        <Label x:Name="label1" FontSize="14" FontWeight="Bold" Content="Choose properties" HorizontalAlignment="Left" Margin="10,73,0,0" VerticalAlignment="Top" Height="31"/>
+        <DataGrid x:Name="dataGrid"  ItemsSource="{Binding Path = Properties }" IsReadOnly="True" SelectionMode="Extended" Margin="10,103,0,70" HorizontalAlignment="Left" Width="400">
+            <DataGrid.RowHeaderTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <CheckBox IsChecked="{Binding Path=IsSelected, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGridRow}}}"/>
+                    </Grid>
+                </DataTemplate>
+            </DataGrid.RowHeaderTemplate>
+        </DataGrid>
+        
+        <Button x:Name="button" Command="{Binding GetEVCommand}" Content="Get" Margin="309,0,0,22" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="101">
 
             <Button.CommandParameter>
                 <MultiBinding Converter="{StaticResource multiCloner}">
@@ -33,10 +43,10 @@
 
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
-                    
+
                     <Setter Property="ToolTipService.ShowOnDisabled" Value="true" />
                     <Setter Property="ToolTip" Value="{x:Null}" />
-                    
+
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding Text.Length, ElementName=comboBox, UpdateSourceTrigger=PropertyChanged}" Value="0">
                             <Setter Property="IsEnabled" Value="False"/>
@@ -46,31 +56,13 @@
                         </Trigger>
                     </Style.Triggers>
                 </Style>
-
-                    
-                   
-                  
-
-                </Button.Style>
+            </Button.Style>
             
         </Button>
 
-        <ComboBox x:Name="comboBox" SelectedItem="{Binding Path=ChosenDMSType}" HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top" Width="327" ItemsSource="{Binding Path= ModelCodes }"/>
-        <Label x:Name="label1" Content="Choose properties" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top" Height="25"/>
-
-        <DataGrid x:Name="dataGrid"  ItemsSource="{Binding Path = Properties }" IsReadOnly="True" SelectionMode="Extended"  HorizontalAlignment="Left" Margin="10,104,0,0" VerticalAlignment="Top" Height="366" Width="327">
-            <DataGrid.RowHeaderTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <CheckBox IsChecked="{Binding Path=IsSelected, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGridRow}}}"/>
-                    </Grid>
-                </DataTemplate>
-            </DataGrid.RowHeaderTemplate>
-        </DataGrid>
-
+        <Label x:Name="label3" Content="Results" Margin="420,16,227,0" Height="37" VerticalAlignment="Top" FontSize="20" FontWeight="Bold" />
         <DataGrid x:Name="dataGrid1" ItemsSource="{Binding ResourceDescriptions}" 
-                  AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Extended"
-                  HorizontalAlignment="Left" Margin="358,47,0,0" VerticalAlignment="Top" Height="423" Width="380">
+                  AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Extended" Margin="420,47,20,70">
             <DataGrid.ColumnHeaderStyle>
                 <Style TargetType="{x:Type DataGridColumnHeader}">
                     <Setter Property="FontSize" Value="14"/>
@@ -81,8 +73,6 @@
                 <DataGridTextColumn Header="Value"  Binding="{Binding Value}"/>
             </DataGrid.Columns>
         </DataGrid>
-
-        <Label x:Name="label3" Content="Results" HorizontalAlignment="Left" Margin="358,16,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </UserControl>

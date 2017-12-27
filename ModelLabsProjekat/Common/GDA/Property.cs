@@ -506,6 +506,11 @@ namespace FTN.Common
 				case PropertyType.Int32:
 					return this.AsInt().ToString();
 				case PropertyType.Int64:
+                    if (this.Id == ModelCode.IDOBJ_GID)
+                    {
+                        return String.Format("0x{0:x16}", this.AsLong());
+                    }
+                    return this.AsLong().ToString();
 				case PropertyType.TimeSpan:
 					return this.AsLong().ToString();
 				case PropertyType.Reference:

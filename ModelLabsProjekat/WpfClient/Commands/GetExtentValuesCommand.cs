@@ -63,7 +63,8 @@ namespace WpfClient.Commands
 
                 ModelCode modelCode;
                 ModelCodeHelper.GetModelCodeFromString(modelCodeString, out modelCode);
-                ResourceDescriptionWrapper rdw = new ResourceDescriptionWrapper(modelCodeString, (item.Id).ToString());
+                string temp = String.Format("0x{0:x16}", (item.Id));
+                ResourceDescriptionWrapper rdw = new ResourceDescriptionWrapper(modelCodeString, temp);
                 ocRd.Add(rdw);
 
                 foreach (var prop in item.Properties)
