@@ -98,7 +98,7 @@ namespace WpfClient.Commands
             }
             catch
             {
-
+                MessageBox.Show("Service host is not started.");
             }
 
             vm.ResourceDescriptions = ocRd;

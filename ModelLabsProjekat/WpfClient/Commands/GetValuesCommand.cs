@@ -53,22 +53,29 @@ namespace WpfClient.Commands
                 return;
             }
 
-            ResourceDescription rd = Connection.Connection.Instance().GetValues(globalId, m);
-
             ObservableCollection<ResourceDescriptionWrapper> ocRd = new ObservableCollection<ResourceDescriptionWrapper>();
-            
-            var modelCodeString = ((DMSType)ModelCodeHelper.ExtractTypeFromGlobalId(rd.Id)).ToString();
-
-            ModelCode modelCode;
-            ModelCodeHelper.GetModelCodeFromString(modelCodeString, out modelCode);
-            string temp = String.Format("0x{0:x16}", (rd.Id));
-            ResourceDescriptionWrapper rdw = new ResourceDescriptionWrapper(modelCodeString, temp);
-            ocRd.Add(rdw);
-
-            foreach (var prop in rd.Properties)
+            try
             {
-                ResourceDescriptionWrapper rdw1 = new ResourceDescriptionWrapper((prop.Id).ToString(), prop.ToString());
-                ocRd.Add(rdw1);
+                ResourceDescription rd = Connection.Connection.Instance().GetValues(globalId, m);
+                
+                var modelCodeString = ((DMSType)ModelCodeHelper.ExtractTypeFromGlobalId(rd.Id)).ToString();
+
+                ModelCode modelCode;
+                ModelCodeHelper.GetModelCodeFromString(modelCodeString, out modelCode);
+                string temp = String.Format("0x{0:x16}", (rd.Id));
+                ResourceDescriptionWrapper rdw = new ResourceDescriptionWrapper(modelCodeString, temp);
+                ocRd.Add(rdw);
+
+                foreach (var prop in rd.Properties)
+                {
+                    ResourceDescriptionWrapper rdw1 = new ResourceDescriptionWrapper((prop.Id).ToString(), prop.ToString());
+                    ocRd.Add(rdw1);
+                }
+
+            }
+            catch
+            {
+                MessageBox.Show("Service host is not started.");
             }
 
             vm.ResourceDescription = ocRd;

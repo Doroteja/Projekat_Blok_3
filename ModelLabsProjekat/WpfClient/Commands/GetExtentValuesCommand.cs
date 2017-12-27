@@ -56,25 +56,32 @@ namespace WpfClient.Commands
             List<ResourceDescription> rds = Connection.Connection.Instance().GetExtentValues(mc, m);
 
             ObservableCollection<ResourceDescriptionWrapper> ocRd = new ObservableCollection<ResourceDescriptionWrapper>();
-            
-            foreach (var item in rds)
+
+            try
             {
-                var modelCodeString = ((DMSType)ModelCodeHelper.ExtractTypeFromGlobalId(item.Id)).ToString();
-
-                ModelCode modelCode;
-                ModelCodeHelper.GetModelCodeFromString(modelCodeString, out modelCode);
-                string temp = String.Format("0x{0:x16}", (item.Id));
-                ResourceDescriptionWrapper rdw = new ResourceDescriptionWrapper(modelCodeString, temp);
-                ocRd.Add(rdw);
-
-                foreach (var prop in item.Properties)
+                foreach (var item in rds)
                 {
-                    string s = prop.ToString();
-                    ResourceDescriptionWrapper rdw1 = new ResourceDescriptionWrapper((prop.Id).ToString(), s);
-                    ocRd.Add(rdw1);
+                    var modelCodeString = ((DMSType)ModelCodeHelper.ExtractTypeFromGlobalId(item.Id)).ToString();
+
+                    ModelCode modelCode;
+                    ModelCodeHelper.GetModelCodeFromString(modelCodeString, out modelCode);
+                    string temp = String.Format("0x{0:x16}", (item.Id));
+                    ResourceDescriptionWrapper rdw = new ResourceDescriptionWrapper(modelCodeString, temp);
+                    ocRd.Add(rdw);
+
+                    foreach (var prop in item.Properties)
+                    {
+                        string s = prop.ToString();
+                        ResourceDescriptionWrapper rdw1 = new ResourceDescriptionWrapper((prop.Id).ToString(), s);
+                        ocRd.Add(rdw1);
+                    }
+                    ResourceDescriptionWrapper empty = new ResourceDescriptionWrapper();
+                    ocRd.Add(empty);
                 }
-                ResourceDescriptionWrapper empty = new ResourceDescriptionWrapper();
-                ocRd.Add(empty);
+            }
+            catch
+            {
+                MessageBox.Show("Service host is not started.");
             }
             vm.ResourceDescriptions = ocRd;
         }

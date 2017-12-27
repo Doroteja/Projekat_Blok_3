@@ -80,7 +80,7 @@ namespace WpfClient.Connection
             }
             catch (Exception e)
             {
-                MessageBox.Show(String.Format("Getting values method for entered id [{0}] failed.", globalId));
+                MessageBox.Show(String.Format("Getting values method failed. Check service connection. ", globalId));
                 return null;
             }
 
@@ -104,7 +104,7 @@ namespace WpfClient.Connection
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show(String.Format("Getting extent values method for entered model code [{0}] failed.", modelCode));
+                    MessageBox.Show(String.Format("Getting extent values method failed. Check service connection. ", modelCode));
                 }
 
                 while (resourcesLeft > 0)
@@ -151,7 +151,7 @@ namespace WpfClient.Connection
             }
             catch
             {
-
+                MessageBox.Show(String.Format("Getting related values method failed. Check service connection. ", sourceGlobalId));
             }
 
             return retVal;
